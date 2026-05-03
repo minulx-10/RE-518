@@ -47,6 +47,17 @@
 
 터미널을 2개 열어서 각각 실행합니다.
 
+먼저 Node.js가 설치되어 있어야 합니다.
+
+확인:
+
+```bash
+node -v
+npm -v
+```
+
+둘 중 하나라도 버전이 안 나오면 Node.js LTS를 설치해야 합니다.
+
 ### 1. 백엔드 실행
 
 ```bash
@@ -81,6 +92,102 @@ npm run dev
 ```txt
 http://localhost:5173
 ```
+
+## 실행 순서 요약
+
+1. `backend` 폴더에서 `npm install`
+2. `backend` 폴더에서 `npm start`
+3. 새 터미널을 열고 `frontend` 폴더에서 `npm install`
+4. `frontend` 폴더에서 `npm run dev`
+5. 브라우저에서 `http://localhost:5173` 접속
+
+## 백엔드 API 설명
+
+대훈 파트에서 주로 볼 부분입니다.
+
+```txt
+GET  /api/health
+서버가 켜져 있는지 확인합니다.
+
+GET  /api/missions
+미션 3개 목록을 프론트에 보내줍니다.
+
+GET  /api/missions/:id
+특정 미션 하나만 확인합니다.
+
+POST /api/missions/:id/complete
+미션을 완료 처리하고 복원률을 다시 계산합니다.
+
+GET  /api/progress
+현재 복원률과 완료된 미션 목록을 보여줍니다.
+
+GET  /api/iot/state
+ESP32가 읽는 주소입니다. progress와 ledLevel을 보내줍니다.
+
+POST /api/reset
+시연 상태를 0%로 초기화합니다.
+```
+
+## 프론트 조작 방법
+
+1. 왼쪽에서 복원할 기록을 선택합니다.
+2. 가운데 단서 카드를 누릅니다.
+3. 공식 기록 비교 카드와 맞는 단서만 남깁니다.
+4. 검증 상태가 완료 조건을 만족하면 `선택한 단서로 기록 복원`을 누릅니다.
+5. 오른쪽 복원률과 기억 저장소 LED 단계가 올라가는지 확인합니다.
+
+## 미션 데이터 수정 방법
+
+민욱/건호 파트에서 주로 볼 부분입니다.
+
+미션 내용은 `backend/data/missions.json`에서 수정합니다.
+
+중요한 필드:
+
+```txt
+title: 미션 제목
+summary: 미션 카드와 상단 설명
+instruction: 사용자가 해야 할 일
+damagedRecord: 복원 전 기록
+clues: 단서 카드 목록
+officialNote: 공식 기록 비교 카드 문구
+restoredText: 복원 완료 후 표시할 문장
+rememberPoint: 최종 발표에서 말할 기억 포인트
+sources: 공식 근거 링크
+```
+
+단서 하나는 이렇게 생겼습니다.
+
+```json
+{
+  "id": "testimony",
+  "label": "시민 증언",
+  "correct": true,
+  "reason": "당시 상황을 복원하는 핵심 기록 자료입니다."
+}
+```
+
+`correct: true`면 사용자가 선택해야 하는 단서입니다.
+`correct: false`면 공식 기록과 맞지 않거나 제외해야 하는 단서입니다.
+
+## IoT 연결 방법
+
+건호 파트에서 주로 볼 부분입니다.
+
+1. `iot/esp32_led.ino`를 Arduino IDE에서 엽니다.
+2. 아래 값을 본인 환경에 맞게 바꿉니다.
+
+```cpp
+const char* WIFI_SSID = "YOUR_WIFI_NAME";
+const char* WIFI_PASSWORD = "YOUR_WIFI_PASSWORD";
+const char* SERVER_URL = "http://YOUR_NOTEBOOK_IP:3001/api/iot/state";
+```
+
+3. 노트북 IP는 같은 와이파이에 연결된 IPv4 주소를 사용합니다.
+4. 백엔드 서버를 먼저 켠 뒤 ESP32를 업로드합니다.
+5. 복원률이 올라갈 때 LED 밝기가 바뀌면 성공입니다.
+
+IoT가 실패해도 프론트 오른쪽의 `기억 저장소` 패널이 시뮬레이션 역할을 하므로 발표는 계속할 수 있습니다.
 
 ## 시연 흐름
 

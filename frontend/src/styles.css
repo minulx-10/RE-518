@@ -21,12 +21,24 @@ body {
   background-size: cover;
 }
 
-button {
+button,
+a {
   font: inherit;
 }
 
+button {
+  border: 0;
+}
+
+code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  color: #f8ead0;
+  background: rgba(0, 0, 0, 0.32);
+}
+
 .app-shell {
-  width: min(1440px, 100%);
+  width: min(1480px, 100%);
   margin: 0 auto;
   padding: 28px;
 }
@@ -39,10 +51,11 @@ button {
   margin-bottom: 24px;
 }
 
-.eyebrow {
+.eyebrow,
+.panel-title span {
   margin: 0 0 8px;
   color: #e6bf75;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
 }
 
 h1,
@@ -58,9 +71,13 @@ h1 {
   letter-spacing: 0;
 }
 
+h2 {
+  margin-bottom: 14px;
+}
+
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr) 260px;
+  grid-template-columns: 280px minmax(0, 1fr) 280px;
   gap: 18px;
 }
 
@@ -71,7 +88,7 @@ h1 {
 .empty-state {
   border: 1px solid rgba(230, 191, 117, 0.24);
   border-radius: 8px;
-  background: rgba(18, 17, 15, 0.88);
+  background: rgba(18, 17, 15, 0.9);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
 }
 
@@ -94,6 +111,12 @@ h1 {
   cursor: pointer;
 }
 
+.mission-card:hover,
+.clue-card:hover,
+.ghost-button:hover {
+  border-color: rgba(230, 191, 117, 0.7);
+}
+
 .mission-card.active {
   border-color: #e6bf75;
   background: rgba(230, 191, 117, 0.16);
@@ -109,27 +132,80 @@ h1 {
   padding: 24px;
 }
 
-.record-header p {
+.record-header {
+  margin-bottom: 16px;
+}
+
+.record-header p,
+.record-header span {
   color: #cdbf9d;
+  line-height: 1.6;
+}
+
+.mission-brief {
+  margin-bottom: 18px;
+  padding: 16px;
+  border-radius: 8px;
+  background: rgba(230, 191, 117, 0.11);
+  line-height: 1.7;
+}
+
+.mission-brief p {
+  margin-bottom: 0;
+}
+
+.record-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.damaged-record,
+.restored-record {
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  border-radius: 8px;
+  line-height: 1.8;
 }
 
 .damaged-record {
-  min-height: 160px;
-  display: flex;
-  align-items: center;
-  padding: 28px;
   border: 1px dashed rgba(230, 191, 117, 0.4);
-  border-radius: 8px;
   background:
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0 2px, transparent 2px 8px),
     rgba(255, 255, 255, 0.04);
   color: #f8ead0;
-  line-height: 1.8;
+}
+
+.restored-record {
+  border: 1px solid rgba(245, 239, 227, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cdbf9d;
+}
+
+.restored-record.visible {
+  border-color: rgba(230, 191, 117, 0.7);
+  color: #f8ead0;
+  background: rgba(230, 191, 117, 0.12);
+}
+
+.damaged-record span,
+.restored-record span {
+  margin-bottom: 8px;
+  color: #e6bf75;
+  font-size: 0.86rem;
+}
+
+.damaged-record p,
+.restored-record p {
+  margin-bottom: 0;
 }
 
 .clue-area {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
   gap: 18px;
   margin-top: 22px;
 }
@@ -141,13 +217,22 @@ h1 {
 }
 
 .clue-card {
-  min-height: 76px;
-  padding: 12px;
+  min-height: 96px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
   border: 1px solid rgba(245, 239, 227, 0.14);
   border-radius: 8px;
   color: #f5efe3;
   background: #262219;
+  text-align: left;
   cursor: pointer;
+}
+
+.clue-card small {
+  color: #cdbf9d;
+  line-height: 1.5;
 }
 
 .clue-card.selected {
@@ -162,11 +247,72 @@ h1 {
   line-height: 1.7;
 }
 
+.source-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.source-list a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #f8ead0;
+  background: rgba(0, 0, 0, 0.22);
+  text-decoration: none;
+}
+
+.selection-report {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.selection-report p {
+  margin-bottom: 0;
+  color: #cdbf9d;
+  line-height: 1.6;
+}
+
+.selection-report dl {
+  display: grid;
+  grid-template-columns: repeat(3, 88px);
+  gap: 10px;
+  margin: 0;
+}
+
+.selection-report dl div {
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.24);
+  text-align: center;
+}
+
+.selection-report dt {
+  color: #cdbf9d;
+  font-size: 0.78rem;
+}
+
+.selection-report dd {
+  margin: 4px 0 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
 .record-actions {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-top: 22px;
+}
+
+.record-actions p {
+  margin-bottom: 0;
+  color: #cdbf9d;
 }
 
 .primary-button,
@@ -178,7 +324,6 @@ h1 {
 }
 
 .primary-button {
-  border: 0;
   color: #1a1711;
   background: #e6bf75;
   font-weight: 800;
@@ -249,10 +394,19 @@ h1 {
   box-shadow: 0 0 40px rgba(255, 248, 232, 0.9);
 }
 
+.iot-caption {
+  color: #cdbf9d;
+  line-height: 1.7;
+}
+
 .complete-panel {
   margin-top: 18px;
   padding: 24px;
   line-height: 1.8;
+}
+
+.complete-panel p:last-child {
+  margin-bottom: 0;
 }
 
 .empty-state {
@@ -262,14 +416,20 @@ h1 {
   padding: 28px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
   .dashboard-grid,
-  .clue-area {
+  .clue-area,
+  .record-compare,
+  .selection-report {
     grid-template-columns: 1fr;
   }
 
   .progress-panel {
     grid-row: 2;
+  }
+
+  .selection-report dl {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -284,7 +444,8 @@ h1 {
     flex-direction: column;
   }
 
-  .clue-grid {
+  .clue-grid,
+  .selection-report dl {
     grid-template-columns: 1fr;
   }
 }

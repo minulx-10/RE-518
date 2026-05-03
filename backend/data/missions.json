@@ -4,111 +4,156 @@
     "code": "RE-001",
     "title": "전남대 정문 기록 복원",
     "type": "clue-match",
+    "roleOwner": "다온",
     "date": "1980년 5월 18일",
     "place": "전남대 정문",
     "summary": "휴교령과 등교 저지, 학생들의 항의 흐름을 단서로 연결해 5·18 초기 상황을 복원합니다.",
+    "instruction": "사건의 날짜, 장소, 원인, 이어진 흐름에 해당하는 단서를 모두 선택하세요. 공식 기록과 맞지 않는 단서는 선택하지 않는 것이 핵심입니다.",
     "damagedRecord": "1980년 5월 18일, 전남대 정문 앞에서 학생들은 [     ]에 의해 등교를 저지당했고, 이에 항의하는 흐름이 [     ]로 이어졌습니다.",
     "clues": [
       {
         "id": "date-518",
         "label": "1980년 5월 18일",
-        "correct": true
+        "correct": true,
+        "reason": "미션의 기준 날짜입니다."
       },
       {
         "id": "place-jnu",
         "label": "전남대 정문",
-        "correct": true
+        "correct": true,
+        "reason": "초기 상황을 설명하는 핵심 장소입니다."
       },
       {
         "id": "martial-law",
         "label": "계엄군의 등교 저지",
-        "correct": true
+        "correct": true,
+        "reason": "학생들이 정문 앞에서 맞닥뜨린 상황을 설명합니다."
       },
       {
         "id": "protest",
         "label": "학생 항의 시위",
-        "correct": true
+        "correct": true,
+        "reason": "등교 저지 이후 이어진 흐름입니다."
       },
       {
         "id": "wrong-year",
         "label": "1990년대 후반 사건",
-        "correct": false
+        "correct": false,
+        "reason": "5·18 초기 상황의 날짜와 맞지 않습니다."
       }
     ],
     "officialNote": "공식 자료와 사료 설명에서는 1980년 5월 18일 전남대 정문에서 학생들의 등교 저지와 항의가 5·18 초기 흐름으로 이어졌다고 설명합니다.",
-    "restoredText": "1980년 5월 18일, 전남대 정문 앞에서 학생들은 계엄군에 의해 등교를 저지당했고, 이에 항의하는 흐름이 학생 시위로 이어졌습니다."
+    "restoredText": "1980년 5월 18일, 전남대 정문 앞에서 학생들은 계엄군에 의해 등교를 저지당했고, 이에 항의하는 흐름이 학생 시위로 이어졌습니다.",
+    "rememberPoint": "5·18은 어느 날 갑자기 생긴 추상적인 사건이 아니라, 구체적인 장소와 시간에서 시민과 학생들이 겪은 실제 상황에서 시작되었습니다.",
+    "sources": [
+      {
+        "name": "5·18기념재단 — 5·18 그날의 기록과 진실",
+        "url": "https://www.518.org/base/menu/baseView?menuLevel=2&menuNo=1"
+      },
+      {
+        "name": "전남대학교 민주길 — 전남대 정문",
+        "url": "https://518trail.jnu.ac.kr/SubPage.aspx?PageCode=K20200"
+      }
+    ]
   },
   {
     "id": 2,
     "code": "RE-002",
     "title": "검열된 기사 복원",
     "type": "article-restore",
+    "roleOwner": "다온",
     "date": "1980년 5월",
     "place": "광주",
     "summary": "검열된 기사 문장을 단서 카드로 복원하며 언론 통제와 기록의 중요성을 확인합니다.",
+    "instruction": "검열로 가려진 문장을 복원하기 위해 신뢰 가능한 기록 단서만 고르세요. 출처 없는 소문은 기록 복원의 근거가 될 수 없습니다.",
     "damagedRecord": "당시 광주의 상황은 언론 통제와 검열 속에서 충분히 보도되지 못했습니다. 시민들의 증언과 기록은 [     ]을 다시 확인하는 중요한 근거가 되었습니다.",
     "clues": [
       {
         "id": "testimony",
         "label": "시민 증언",
-        "correct": true
+        "correct": true,
+        "reason": "당시 상황을 복원하는 핵심 기록 자료입니다."
       },
       {
         "id": "record",
         "label": "공식 기록",
-        "correct": true
+        "correct": true,
+        "reason": "검증 가능한 근거로 사용할 수 있습니다."
       },
       {
         "id": "archive",
         "label": "보존된 자료",
-        "correct": true
+        "correct": true,
+        "reason": "기록 복원소의 아카이브 성격과 맞습니다."
       },
       {
         "id": "rumor",
         "label": "출처 없는 소문",
-        "correct": false
+        "correct": false,
+        "reason": "공식 기록 비교 없이 사용할 수 없는 단서입니다."
       }
     ],
-    "officialNote": "이 미션은 특정 기사 원문 재현이 아니라, 검열과 기록 보존이라는 구조를 체험하기 위한 시연용 복원 미션입니다. 실제 발표 전에는 공식 출처 문구를 반드시 다시 확인해야 합니다.",
-    "restoredText": "당시 광주의 상황은 언론 통제와 검열 속에서 충분히 보도되지 못했습니다. 시민들의 증언과 기록은 진실을 다시 확인하는 중요한 근거가 되었습니다."
+    "officialNote": "비상계엄 확대 조치에는 언론·출판·보도 사전검열이 포함되었습니다. 이 미션은 특정 기사 원문을 임의로 재현하는 것이 아니라, 검열 상황에서 기록과 증언이 왜 중요한지 보여주는 시연용 구조입니다.",
+    "restoredText": "당시 광주의 상황은 언론 통제와 검열 속에서 충분히 보도되지 못했습니다. 시민들의 증언과 기록은 진실을 다시 확인하는 중요한 근거가 되었습니다.",
+    "rememberPoint": "검열은 사건을 사라지게 만들 수 있지만, 보존된 기록과 증언은 시간이 지나도 다시 연결될 수 있습니다.",
+    "sources": [
+      {
+        "name": "5·18기념재단 — 5·18 그날의 기록과 진실",
+        "url": "https://518.org/base/contents/view?contentsNo=1&menuLevel=3&menuNo=1"
+      }
+    ]
   },
   {
     "id": 3,
     "code": "RE-003",
     "title": "왜곡 표현 검증",
     "type": "distortion-check",
+    "roleOwner": "다온",
     "date": "현재의 기록 검증",
     "place": "기록 복원소",
     "summary": "공식 기록과 일치하지 않는 왜곡 표현을 비교 카드와 대조해 제거합니다.",
+    "instruction": "이 미션은 사용자의 감으로 정답을 맞히는 퀴즈가 아닙니다. 공식 기록과 맞지 않는 왜곡 표현은 선택하지 말고, 검증 가능한 문장만 남기세요.",
     "damagedRecord": "아래 문장을 공식 기록 비교 카드와 대조해 검증하세요. 이 미션은 개인 판단이 아니라 공식 기록 기반 확인 절차입니다.",
     "clues": [
       {
         "id": "distortion-1",
         "label": "북한군이 주도했다",
-        "correct": false
+        "correct": false,
+        "reason": "공식 조사와 기록 검증에서 근거 없는 왜곡 주장으로 다뤄졌습니다."
       },
       {
         "id": "distortion-2",
         "label": "시민들이 먼저 무차별 폭력을 시작했다",
-        "correct": false
+        "correct": false,
+        "reason": "시민을 폭도화하는 표현은 공식 기록 비교가 필요한 왜곡 표현입니다."
       },
       {
         "id": "distortion-3",
         "label": "계엄군은 보호 목적으로만 투입됐다",
-        "correct": false
+        "correct": false,
+        "reason": "국가폭력과 진압 책임을 흐리는 표현이므로 그대로 사용할 수 없습니다."
       },
       {
         "id": "verified-1",
         "label": "5·18은 공식 기록과 증언을 통해 계속 검증되고 보존되어 왔다",
-        "correct": true
+        "correct": true,
+        "reason": "기록 복원소의 핵심 메시지와 맞는 검증 가능한 표현입니다."
       },
       {
         "id": "verified-2",
         "label": "왜곡 표현은 공식 기록과 비교해 확인해야 한다",
-        "correct": true
+        "correct": true,
+        "reason": "역사 왜곡 방지를 위한 안전한 미션 방식입니다."
       }
     ],
     "officialNote": "왜곡 표현 제거 미션은 사용자가 역사적 판단을 임의로 내리는 구조가 아니라, 공식 기록과 맞지 않는 표현을 확인하고 제거하는 구조로 설계해야 합니다.",
-    "restoredText": "공식 기록과 증언을 기준으로 왜곡 표현을 제거했습니다. 기록은 검증될 때 더 오래 보존될 수 있습니다."
+    "restoredText": "공식 기록과 증언을 기준으로 왜곡 표현을 제거했습니다. 기록은 검증될 때 더 오래 보존될 수 있습니다.",
+    "rememberPoint": "역사를 기억한다는 것은 단순히 정보를 외우는 것이 아니라, 왜곡된 표현을 검증하고 책임 있게 다루는 태도까지 포함합니다.",
+    "sources": [
+      {
+        "name": "5·18민주화운동진상규명조사위원회 종합보고서",
+        "url": "https://www.518.org/storage/pdf/5.18%EC%A7%84%EC%83%81%EA%B7%9C%EB%AA%85%EC%A1%B0%EC%82%AC%EC%9C%84%EC%9B%90%ED%9A%8C%20%EC%A2%85%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C1%282024.%206.%2024.%29.pdf"
+      }
+    ]
   }
 ]
