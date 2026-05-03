@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "code": "RE-001",
+    "title": "전남대 정문 기록 복원",
+    "type": "clue-match",
+    "date": "1980년 5월 18일",
+    "place": "전남대 정문",
+    "summary": "휴교령과 등교 저지, 학생들의 항의 흐름을 단서로 연결해 5·18 초기 상황을 복원합니다.",
+    "damagedRecord": "1980년 5월 18일, 전남대 정문 앞에서 학생들은 [     ]에 의해 등교를 저지당했고, 이에 항의하는 흐름이 [     ]로 이어졌습니다.",
+    "clues": [
+      {
+        "id": "date-518",
+        "label": "1980년 5월 18일",
+        "correct": true
+      },
+      {
+        "id": "place-jnu",
+        "label": "전남대 정문",
+        "correct": true
+      },
+      {
+        "id": "martial-law",
+        "label": "계엄군의 등교 저지",
+        "correct": true
+      },
+      {
+        "id": "protest",
+        "label": "학생 항의 시위",
+        "correct": true
+      },
+      {
+        "id": "wrong-year",
+        "label": "1990년대 후반 사건",
+        "correct": false
+      }
+    ],
+    "officialNote": "공식 자료와 사료 설명에서는 1980년 5월 18일 전남대 정문에서 학생들의 등교 저지와 항의가 5·18 초기 흐름으로 이어졌다고 설명합니다.",
+    "restoredText": "1980년 5월 18일, 전남대 정문 앞에서 학생들은 계엄군에 의해 등교를 저지당했고, 이에 항의하는 흐름이 학생 시위로 이어졌습니다."
+  },
+  {
+    "id": 2,
+    "code": "RE-002",
+    "title": "검열된 기사 복원",
+    "type": "article-restore",
+    "date": "1980년 5월",
+    "place": "광주",
+    "summary": "검열된 기사 문장을 단서 카드로 복원하며 언론 통제와 기록의 중요성을 확인합니다.",
+    "damagedRecord": "당시 광주의 상황은 언론 통제와 검열 속에서 충분히 보도되지 못했습니다. 시민들의 증언과 기록은 [     ]을 다시 확인하는 중요한 근거가 되었습니다.",
+    "clues": [
+      {
+        "id": "testimony",
+        "label": "시민 증언",
+        "correct": true
+      },
+      {
+        "id": "record",
+        "label": "공식 기록",
+        "correct": true
+      },
+      {
+        "id": "archive",
+        "label": "보존된 자료",
+        "correct": true
+      },
+      {
+        "id": "rumor",
+        "label": "출처 없는 소문",
+        "correct": false
+      }
+    ],
+    "officialNote": "이 미션은 특정 기사 원문 재현이 아니라, 검열과 기록 보존이라는 구조를 체험하기 위한 시연용 복원 미션입니다. 실제 발표 전에는 공식 출처 문구를 반드시 다시 확인해야 합니다.",
+    "restoredText": "당시 광주의 상황은 언론 통제와 검열 속에서 충분히 보도되지 못했습니다. 시민들의 증언과 기록은 진실을 다시 확인하는 중요한 근거가 되었습니다."
+  },
+  {
+    "id": 3,
+    "code": "RE-003",
+    "title": "왜곡 표현 검증",
+    "type": "distortion-check",
+    "date": "현재의 기록 검증",
+    "place": "기록 복원소",
+    "summary": "공식 기록과 일치하지 않는 왜곡 표현을 비교 카드와 대조해 제거합니다.",
+    "damagedRecord": "아래 문장을 공식 기록 비교 카드와 대조해 검증하세요. 이 미션은 개인 판단이 아니라 공식 기록 기반 확인 절차입니다.",
+    "clues": [
+      {
+        "id": "distortion-1",
+        "label": "북한군이 주도했다",
+        "correct": false
+      },
+      {
+        "id": "distortion-2",
+        "label": "시민들이 먼저 무차별 폭력을 시작했다",
+        "correct": false
+      },
+      {
+        "id": "distortion-3",
+        "label": "계엄군은 보호 목적으로만 투입됐다",
+        "correct": false
+      },
+      {
+        "id": "verified-1",
+        "label": "5·18은 공식 기록과 증언을 통해 계속 검증되고 보존되어 왔다",
+        "correct": true
+      },
+      {
+        "id": "verified-2",
+        "label": "왜곡 표현은 공식 기록과 비교해 확인해야 한다",
+        "correct": true
+      }
+    ],
+    "officialNote": "왜곡 표현 제거 미션은 사용자가 역사적 판단을 임의로 내리는 구조가 아니라, 공식 기록과 맞지 않는 표현을 확인하고 제거하는 구조로 설계해야 합니다.",
+    "restoredText": "공식 기록과 증언을 기준으로 왜곡 표현을 제거했습니다. 기록은 검증될 때 더 오래 보존될 수 있습니다."
+  }
+]

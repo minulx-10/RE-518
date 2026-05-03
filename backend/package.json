@@ -1,0 +1,15 @@
+{
+  "name": "re518-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "RE:518 MVP backend for mission progress and IoT LED state.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

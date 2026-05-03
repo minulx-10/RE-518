@@ -1,0 +1,19 @@
+{
+  "name": "re518-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "RE:518 MVP frontend for record restoration missions.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {}
+}

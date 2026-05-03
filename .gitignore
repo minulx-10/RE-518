@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+.env.local
+
+# 시연 중 백엔드 실행 로그를 파일로 남길 때 Git에 들어가지 않게 막습니다.
+*.log
