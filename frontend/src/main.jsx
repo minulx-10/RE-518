@@ -18,6 +18,13 @@ import "./styles.css";
 
 const API_BASE = "http://localhost:3001/api";
 
+const storyIntro = {
+  chapter: "제0장",
+  title: "비상계엄",
+  body:
+    "현재의 기록 보관소에서 모든 기록을 확인하던 순간, 비상계엄령 사이렌이 울리고 시스템은 1980년 5월 17일 밤으로 되감깁니다. 검열·차단·왜곡으로 사라진 기록을 복원해야 다시 현재로 돌아올 수 있습니다.",
+};
+
 function App() {
   /*
     useState는 화면에서 변하는 값을 저장합니다.
@@ -164,7 +171,7 @@ function App() {
 
     /*
       완료 버튼을 누르면 백엔드에 POST 요청을 보냅니다.
-      백엔드는 progress.json을 갱신하고, 새 복원률과 LED 단계를 돌려줍니다.
+      백엔드는 SQLite DB를 갱신하고, 새 복원률과 LED 단계를 돌려줍니다.
     */
     const response = await fetch(`${API_BASE}/missions/${selectedMission.id}/complete`, {
       method: "POST",
@@ -178,7 +185,7 @@ function App() {
       ledLevel: result.ledLevel,
       message: result.message,
     });
-    setNotice(`${selectedMission.title} 복원이 완료되었습니다.`);
+    setNotice(`${selectedMission.chapter} ${selectedMission.title} 복원이 완료되었습니다. ${selectedMission.nextRecord}`);
   }
 
   async function resetDemo() {
@@ -227,11 +234,19 @@ function App() {
         </button>
       </header>
 
+      <section className="story-intro">
+        <span>{storyIntro.chapter}</span>
+        <div>
+          <h2>{storyIntro.title}</h2>
+          <p>{storyIntro.body}</p>
+        </div>
+      </section>
+
       <section className="dashboard-grid">
         <aside className="mission-list" aria-label="복원 대기 기록">
           <div className="panel-title">
-            <span>Archive Queue</span>
-            <h2>복원 대기 중인 기록</h2>
+            <span>Story Route</span>
+            <h2>기록 복원 경로</h2>
           </div>
 
           {missions.map((mission) => (
@@ -240,9 +255,11 @@ function App() {
               key={mission.id}
               onClick={() => setSelectedMissionId(mission.id)}
             >
-              <span>{mission.code}</span>
+              <span>
+                {mission.code} · {mission.chapter}
+              </span>
               <strong>{mission.title}</strong>
-              <small>{mission.completed ? "복원 완료" : "미복원"}</small>
+              <small>{mission.completed ? `복원 완료 · ${mission.nextRecord}` : mission.place}</small>
             </button>
           ))}
         </aside>
@@ -250,11 +267,13 @@ function App() {
         <section className="record-panel">
           <div className="record-header">
             <p>
-              {selectedMission.date} · {selectedMission.place} · 담당 화면: {selectedMission.roleOwner}
+              {selectedMission.chapter} · {selectedMission.date} · {selectedMission.place}
             </p>
             <h2>{selectedMission.title}</h2>
             <span>{selectedMission.summary}</span>
           </div>
+
+          <blockquote className="story-quote">{selectedMission.storyQuote}</blockquote>
 
           <article className="mission-brief">
             <strong>미션 안내</strong>
@@ -324,6 +343,13 @@ function App() {
             </dl>
           </section>
 
+          {(canComplete || selectedMission.completed) && (
+            <section className="next-record">
+              <strong>{selectedMission.nextRecord}</strong>
+              <p>{selectedMission.rememberPoint}</p>
+            </section>
+          )}
+
           <footer className="record-actions">
             <button className="primary-button" onClick={completeMission}>
               선택한 단서로 기록 복원
@@ -346,20 +372,20 @@ function App() {
             <small>LED 단계 {iotState.ledLevel}</small>
           </div>
           <p className="iot-caption">
-            ESP32는 백엔드의 <code>/api/iot/state</code>에서 ledLevel을 읽어 실제 LED 밝기를 바꿉니다.
+            백엔드는 복원률을 SQLite에 저장하고, 아두이노 Serial로 LED 단계 값을 보냅니다.
           </p>
         </aside>
       </section>
 
       {allCompleted && (
         <section className="complete-panel">
-          <h2>복원 완료</h2>
+          <h2>현재로 복귀</h2>
           <p>
-            이 기록은 1980년 5월 광주에서 남겨진 증언과 공식 기록을 바탕으로 재구성되었습니다.
-            기록은 지워질 수 있지만, 다시 연결될 수 있습니다.
+            봉쇄된 대학, 전남대 정문, 광주 시내의 기록이 다시 연결되었습니다.
+            사라진 기록을 복원한 뒤 시스템은 현재 시점으로 돌아옵니다.
           </p>
           <strong>오늘 우리가 기억해야 할 점</strong>
-          <p>{selectedMission.rememberPoint}</p>
+          <p>기록은 지워질 수 있지만, 검증된 기록과 증언을 연결하면 잊힌 진실은 다시 나타날 수 있습니다.</p>
         </section>
       )}
     </main>
