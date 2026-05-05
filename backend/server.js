@@ -192,6 +192,7 @@ async function buildMissionResponse() {
 */
 let arduinoPort = null;
 let arduinoStatus = "disabled";
+let latestIotInput = 0; // 아두이노에서 들어오는 최신 센서 값 (0~1023 예상)
 
 function initArduinoSerial() {
   const portPath = process.env.ARDUINO_PORT;
@@ -219,6 +220,21 @@ function initArduinoSerial() {
 
       arduinoStatus = "connected";
       console.log(`Arduino serial connected on ${portPath}`);
+    });
+
+    /*
+      아두이노에서 보내는 데이터를 읽습니다.
+      예: 아두이노가 Serial.println(512)를 보내면 여기서 받습니다.
+    */
+    const { ReadlineParser } = require("@serialport/parser-readline");
+    const parser = arduinoPort.pipe(new ReadlineParser({ delimiter: "\r\n" }));
+
+    parser.on("data", (data) => {
+      const value = parseInt(data.trim(), 10);
+      if (!isNaN(value)) {
+        latestIotInput = value;
+        // console.log(`Received from Arduino: ${latestIotInput}`); // 시연 시 너무 많으면 주석 처리
+      }
     });
 
     arduinoPort.on("error", (error) => {
@@ -352,6 +368,16 @@ app.get("/api/iot/state", asyncRoute(async (req, res) => {
     arduinoStatus,
   });
 }));
+
+app.get("/api/iot/input", (req, res) => {
+  /*
+    프론트엔드에서 아두이노 센서(가변저항 등) 값을 실시간으로 확인할 때 호출합니다.
+  */
+  res.json({
+    value: latestIotInput,
+    arduinoStatus,
+  });
+});
 
 app.post("/api/reset", asyncRoute(async (req, res) => {
   await resetProgress();
